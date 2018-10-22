@@ -21,6 +21,19 @@ int main(int argc, char* argv[])
     if(image.isImage())
     {
         vector <vector <Pixel> > imagePixels = image.toPixelMatrix();
+        for(int i=0;i<imagePixels.size();i++)
+        {
+            for(int j=0;j<imagePixels[1].size();j++)
+            {
+                Pixel color = imagePixels[i][j];
+                color.green = 0;
+                color.blue = 0;
+                imagePixels[i][j] = color;
+            }
+        }
+        image.fromPixelMatrix( imagePixels );
+        image.save("redness.bmp");
+        cout<<filename<<" is "<<imagePixels.size()<<" pixels high and "<<imagePixels[1].size()<<" pixels wide"<<endl;
 
     }
     else
